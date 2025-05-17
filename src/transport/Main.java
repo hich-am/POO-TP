@@ -17,7 +17,7 @@ public class Main extends Application {
         primaryStage.setTitle("ESI-RUN - Menu Principal");
         Scene scene = new Scene(racine, WINDOW_WIDTH, WINDOW_HEIGHT);
         primaryStage.setScene(scene);
-        primaryStage.setResizable(false); // Prevent window resizing
+        primaryStage.setResizable(false); 
         primaryStage.show();
     }
 

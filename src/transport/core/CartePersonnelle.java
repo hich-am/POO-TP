@@ -19,13 +19,13 @@ public class CartePersonnelle extends TitreTransport {
         } else if (man.isHandicape()) {
             return premprix * 0.5; 
         } else {
-            int age =  Period.between(man.getDateNaissance(), LocalDate.now()).getYears();
+            int age = Period.between(man.getDateNaissance(), LocalDate.now()).getYears();
             if (age < 25) {
                 return premprix * 0.7; 
             } else if (age > 65) {
                 return premprix * 0.75; 
             } else {
-                throw new ReductionImpossibleException(". Vous n'avez droit à aucune réduction");
+                throw new ReductionImpossibleException("Vous n'avez droit à aucune réduction");
             }
         }
     }
@@ -36,7 +36,7 @@ public class CartePersonnelle extends TitreTransport {
         } else if (man.isHandicape()) {
             return TypeCarte.SOLIDARITE;
         } else {
-            int age =  Period.between( LocalDate.now(),man.getDateNaissance()).getYears();
+            int age = Period.between(man.getDateNaissance(), LocalDate.now()).getYears();
             if (age < 25) {
                 return TypeCarte.JUNIOR;
             } else if (age > 65) {

@@ -8,7 +8,7 @@
 <VBox xmlns:fx="http://javafx.com/fxml" 
       fx:controller="transport.control.ReclamationController"
       spacing="15" alignment="CENTER"
-      style="-fx-background-color: #f5f5f5;">
+      style="-fx-background-color:rgb(255, 255, 255);">
     
     <padding>
         <Insets top="30" right="40" bottom="30" left="40"/>
@@ -22,28 +22,52 @@
             <Label text="Nom de l'utilisateur" style="-fx-font-weight: bold;"/>
             <TextField fx:id="champUtilisateur" 
                       promptText="Entrez votre nom"
-                      style="-fx-pref-width: 300;"/>
+                      style="-fx-pref-width: 300;
+                             -fx-background-color: white;
+                             -fx-border-color: #31BCE2;
+                             -fx-border-radius: 4;
+                             -fx-background-radius: 4;
+                             -fx-padding: 8;
+                             -fx-font-size: 13px;"/>
         </VBox>
 
         <VBox spacing="5" GridPane.rowIndex="1" GridPane.columnIndex="0">
             <Label text="Type de réclamation" style="-fx-font-weight: bold;"/>
             <ComboBox fx:id="choixTypeReclamation" 
                       promptText="Sélectionnez le type"
-                      style="-fx-pref-width: 300;"/>
+                      style="-fx-pref-width: 300;
+                             -fx-background-color: white;
+                             -fx-border-color: #31BCE2;
+                             -fx-border-radius: 4;
+                             -fx-background-radius: 4;
+                             -fx-padding: 8;
+                             -fx-font-size: 13px;"/>
         </VBox>
 
         <VBox spacing="5" GridPane.rowIndex="2" GridPane.columnIndex="0">
             <Label text="Type de cible" style="-fx-font-weight: bold;"/>
             <ComboBox fx:id="choixTypeCible"
                       promptText="Sélectionnez le type de cible"
-                      style="-fx-pref-width: 300;"/>
+                      style="-fx-pref-width: 300;
+                             -fx-background-color: white;
+                             -fx-border-color: #31BCE2;
+                             -fx-border-radius: 4;
+                             -fx-background-radius: 4;
+                             -fx-padding: 8;
+                             -fx-font-size: 13px;"/>
         </VBox>
 
         <VBox spacing="5" GridPane.rowIndex="3" GridPane.columnIndex="0">
             <Label text="Cible" style="-fx-font-weight: bold;"/>
             <ComboBox fx:id="choixCible"
                       promptText="Sélectionnez la cible"
-                      style="-fx-pref-width: 300;"/>
+                      style="-fx-pref-width: 300;
+                             -fx-background-color: white;
+                             -fx-border-color: #31BCE2;
+                             -fx-border-radius: 4;
+                             -fx-background-radius: 4;
+                             -fx-padding: 8;
+                             -fx-font-size: 13px;"/>
         </VBox>
 
         <VBox spacing="5" GridPane.rowIndex="4" GridPane.columnIndex="0">
@@ -51,20 +75,34 @@
             <TextArea fx:id="champCommentaire"
                       promptText="Décrivez votre réclamation..."
                       wrapText="true"
-                      style="-fx-pref-width: 300; -fx-pref-height: 100;"/>
+                      style="-fx-pref-width: 300;
+                             -fx-background-color: white;
+                             -fx-border-color: #31BCE2;
+                             -fx-border-radius: 4;
+                             -fx-background-radius: 4;
+                             -fx-padding: 8;
+                             -fx-font-size: 13px;"/>
         </VBox>
     </GridPane>
 
     <HBox spacing="10" alignment="CENTER">
         <Button text="Soumettre" 
                 onAction="#gererSoumettre"
-                style="-fx-background-color: #4CAF50; -fx-text-fill: white; 
-                       -fx-font-weight: bold; -fx-min-width: 120;"/>
+                style="-fx-background-color: #4CAF50;
+                       -fx-text-fill: white;
+                       -fx-font-weight: bold;
+                       -fx-min-width: 120;
+                       -fx-padding: 8;
+                       -fx-background-radius: 4;"/>
         
         <Button text="Retour" 
                 onAction="#gererRetour"
-                style="-fx-background-color: #f44336; -fx-text-fill: white;
-                       -fx-font-weight: bold; -fx-min-width: 120;"/>
+                style="-fx-background-color: #f44336;
+                       -fx-text-fill: white;
+                       -fx-font-weight: bold;
+                       -fx-min-width: 120;
+                       -fx-padding: 8;
+                       -fx-background-radius: 4;"/>
     </HBox>
 
     <Label fx:id="labelResultat" 

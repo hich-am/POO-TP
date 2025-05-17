@@ -6,7 +6,7 @@
 <?import javafx.scene.text.Text?>
 
 <VBox spacing="20.0" alignment="CENTER" 
-      style="-fx-background-color: #f5f5f5;"
+      style="-fx-background-color:rgb(17, 12, 52);"
       xmlns:fx="http://javafx.com/fxml" 
       fx:controller="transport.control.MenuController">
     <padding>
@@ -18,22 +18,42 @@
 
     <VBox spacing="10" alignment="CENTER" style="-fx-padding: 20;">
         <Button text="Ajouter un titre" onAction="#gererTicketAjouter" 
-                style="-fx-background-color: #2196F3; -fx-text-fill: white; 
-                       -fx-font-weight: bold; -fx-min-width: 250; -fx-min-height: 40;"/>
+                style="-fx-background-color: #2196F3; 
+                       -fx-text-fill: white; 
+                       -fx-font-weight: bold;
+                       -fx-min-width: 250;
+                       -fx-padding: 8;
+                       -fx-background-radius: 4;"/>
         <Button text="Afficher les titres vendus" onAction="#gererTicketAfficher"
-                style="-fx-background-color: #2196F3; -fx-text-fill: white; 
-                       -fx-font-weight: bold; -fx-min-width: 250; -fx-min-height: 40;"/>
+                style="-fx-background-color: #2196F3; 
+                       -fx-text-fill: white; 
+                       -fx-font-weight: bold;
+                       -fx-min-width: 250;
+                       -fx-padding: 8;
+                       -fx-background-radius: 4;"/>
         <Button text="Valider un titre" onAction="#gererTicketValider"
-                style="-fx-background-color: #2196F3; -fx-text-fill: white; 
-                       -fx-font-weight: bold; -fx-min-width: 250; -fx-min-height: 40;"/>
+                style="-fx-background-color: #2196F3; 
+                       -fx-text-fill: white; 
+                       -fx-font-weight: bold;
+                       -fx-min-width: 250;
+                       -fx-padding: 8;
+                       -fx-background-radius: 4;"/>
     </VBox>
 
     <VBox spacing="10" alignment="CENTER" style="-fx-padding: 20;">
         <Button text="Enregistrer une réclamation" onAction="#gererReclamation"
-                style="-fx-background-color: #4CAF50; -fx-text-fill: white; 
-                       -fx-font-weight: bold; -fx-min-width: 250; -fx-min-height: 40;"/>
+                style="-fx-background-color: #4CAF50; 
+                       -fx-text-fill: white; 
+                       -fx-font-weight: bold;
+                       -fx-min-width: 250;
+                       -fx-padding: 8;
+                       -fx-background-radius: 4;"/>
         <Button text="Afficher les réclamations" onAction="#gererReclamationAfficher"
-                style="-fx-background-color: #4CAF50; -fx-text-fill: white; 
-                       -fx-font-weight: bold; -fx-min-width: 250; -fx-min-height: 40;"/>
+                style="-fx-background-color: #4CAF50; 
+                       -fx-text-fill: white; 
+                       -fx-font-weight: bold;
+                       -fx-min-width: 250;
+                       -fx-padding: 8;
+                       -fx-background-radius: 4;"/>
     </VBox>
 </VBox>
