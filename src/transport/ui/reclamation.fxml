@@ -2,36 +2,71 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.collections.FXCollections?>
-<?import java.lang.String?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
 
-<GridPane xmlns:fx="http://javafx.com/fxml" fx:controller="transport.control.ReclamationController"
-          hgap="10" vgap="10">
+<VBox xmlns:fx="http://javafx.com/fxml" 
+      fx:controller="transport.control.ReclamationController"
+      spacing="15" alignment="CENTER"
+      style="-fx-background-color: #f5f5f5;">
+    
     <padding>
-        <Insets top="20" right="20" bottom="20" left="20"/>
+        <Insets top="30" right="40" bottom="30" left="40"/>
     </padding>
 
-    <Label text="Nom de l'utilisateur :" GridPane.rowIndex="0"/>
-    <TextField fx:id="champUtilisateur" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+    <Text text="Nouvelle Réclamation" 
+          style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-fill: #1976D2;"/>
 
-    <Label text="Type de réclamation :" GridPane.rowIndex="1"/>
-    <ComboBox fx:id="choixTypeReclamation" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+    <GridPane hgap="15" vgap="15" alignment="CENTER">
+        <VBox spacing="5" GridPane.rowIndex="0" GridPane.columnIndex="0">
+            <Label text="Nom de l'utilisateur" style="-fx-font-weight: bold;"/>
+            <TextField fx:id="champUtilisateur" 
+                      promptText="Entrez votre nom"
+                      style="-fx-pref-width: 300;"/>
+        </VBox>
 
-    <Label text="Type de cible :" GridPane.rowIndex="2"/>
-    <ComboBox fx:id="choixTypeCible" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+        <VBox spacing="5" GridPane.rowIndex="1" GridPane.columnIndex="0">
+            <Label text="Type de réclamation" style="-fx-font-weight: bold;"/>
+            <ComboBox fx:id="choixTypeReclamation" 
+                      promptText="Sélectionnez le type"
+                      style="-fx-pref-width: 300;"/>
+        </VBox>
 
-    <Label text="Cible :" GridPane.rowIndex="3"/>
-    <ComboBox fx:id="choixCible" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+        <VBox spacing="5" GridPane.rowIndex="2" GridPane.columnIndex="0">
+            <Label text="Type de cible" style="-fx-font-weight: bold;"/>
+            <ComboBox fx:id="choixTypeCible"
+                      promptText="Sélectionnez le type de cible"
+                      style="-fx-pref-width: 300;"/>
+        </VBox>
 
-    <Label text="Description :" GridPane.rowIndex="4"/>
-    <TextArea fx:id="champCommentaire" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+        <VBox spacing="5" GridPane.rowIndex="3" GridPane.columnIndex="0">
+            <Label text="Cible" style="-fx-font-weight: bold;"/>
+            <ComboBox fx:id="choixCible"
+                      promptText="Sélectionnez la cible"
+                      style="-fx-pref-width: 300;"/>
+        </VBox>
 
-    <Button text="Soumettre" onAction="#gererSoumettre" 
-            GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+        <VBox spacing="5" GridPane.rowIndex="4" GridPane.columnIndex="0">
+            <Label text="Description" style="-fx-font-weight: bold;"/>
+            <TextArea fx:id="champCommentaire"
+                      promptText="Décrivez votre réclamation..."
+                      wrapText="true"
+                      style="-fx-pref-width: 300; -fx-pref-height: 100;"/>
+        </VBox>
+    </GridPane>
 
-    <Label fx:id="labelResultat" GridPane.rowIndex="6" GridPane.columnSpan="2"/>
+    <HBox spacing="10" alignment="CENTER">
+        <Button text="Soumettre" 
+                onAction="#gererSoumettre"
+                style="-fx-background-color: #4CAF50; -fx-text-fill: white; 
+                       -fx-font-weight: bold; -fx-min-width: 120;"/>
+        
+        <Button text="Retour" 
+                onAction="#gererRetour"
+                style="-fx-background-color: #f44336; -fx-text-fill: white;
+                       -fx-font-weight: bold; -fx-min-width: 120;"/>
+    </HBox>
 
-    <Button text="Retour" onAction="#gererRetour" 
-            GridPane.rowIndex="7" GridPane.columnIndex="1"/>
-</GridPane>
+    <Label fx:id="labelResultat" 
+           style="-fx-font-weight: bold; -fx-text-fill: #1976D2;"/>
+</VBox>

@@ -12,6 +12,8 @@ import java.io.IOException;
 import java.net.URL;
 
 public class MenuController {
+    private static final double WINDOW_WIDTH = 800;
+    private static final double WINDOW_HEIGHT = 600;
 
     @FXML
     public void gererTicketAjouter(ActionEvent event) throws IOException {
@@ -41,7 +43,7 @@ public class MenuController {
     private void chargerScene(ActionEvent event, String fxmlPath) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource(fxmlPath));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(new Scene(root));
+        stage.setScene(new Scene(root, WINDOW_WIDTH, WINDOW_HEIGHT));
         stage.show();
     }
 
@@ -57,7 +59,7 @@ public class MenuController {
             }
 
             Parent root = FXMLLoader.load(url);
-            Scene scene = new Scene(root);
+            Scene scene = new Scene(root, WINDOW_WIDTH, WINDOW_HEIGHT);
             stage.setScene(scene);
             stage.show();
         } catch (Exception e) {

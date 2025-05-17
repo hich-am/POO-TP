@@ -2,20 +2,40 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
 
-<GridPane xmlns:fx="http://javafx.com/fxml" fx:controller="transport.control.TicketValiderController"
-          hgap="10" vgap="10">
+<VBox xmlns:fx="http://javafx.com/fxml" 
+      fx:controller="transport.control.TicketValiderController"
+      spacing="20" alignment="CENTER"
+      style="-fx-background-color: #f5f5f5;">
+    
     <padding>
-        <Insets top="20" right="20" bottom="20" left="20"/>
+        <Insets top="30" right="40" bottom="30" left="40"/>
     </padding>
 
-    <Label text="Entrez l'ID du titre :"/>
-    <TextField fx:id="champId" promptText="ex : 12345"/>
+    <Text text="Validation de Titre" 
+          style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-fill: #1976D2;"/>
 
-    <Button text="Valider" onAction="#gererValider" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
-    <Label fx:id="labelResultat" style="-fx-font-weight: bold;"/>
+    <VBox spacing="5" alignment="CENTER">
+        <Label text="ID du titre" style="-fx-font-weight: bold;"/>
+        <TextField fx:id="champId" 
+                  promptText="Entrez l'ID du titre"
+                  style="-fx-pref-width: 300;"/>
+    </VBox>
 
-    <Button text="Retour au menu principal" onAction="#gererRetour" 
-        GridPane.rowIndex="2" GridPane.columnIndex="1"/>
-</GridPane>
+    <Label fx:id="labelResultat" 
+           style="-fx-font-weight: bold; -fx-font-size: 16px;"/>
+
+    <HBox spacing="10" alignment="CENTER">
+        <Button text="Valider" 
+                onAction="#gererValider"
+                style="-fx-background-color: #4CAF50; -fx-text-fill: white; 
+                       -fx-font-weight: bold; -fx-min-width: 120;"/>
+        
+        <Button text="Retour" 
+                onAction="#gererRetour"
+                style="-fx-background-color: #f44336; -fx-text-fill: white;
+                       -fx-font-weight: bold; -fx-min-width: 120;"/>
+    </HBox>
+</VBox>

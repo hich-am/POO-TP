@@ -2,15 +2,27 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
 
-<GridPane xmlns:fx="http://javafx.com/fxml" fx:controller="transport.control.TicketAfficherController"
-          hgap="10" vgap="10">
-    <padding>
-        <Insets top="20" right="20" bottom="20" left="20"/>
-    </padding>
+<VBox xmlns:fx="http://javafx.com/fxml" 
+      fx:controller="transport.control.TicketAfficherController"
+      spacing="20" alignment="CENTER"
+      style="-fx-background-color: #f5f5f5;">
     
-    <ListView fx:id="listeTickets" GridPane.rowIndex="0" GridPane.columnSpan="2"/>
-    <Button text="Retour au menu principal" onAction="#gererRetour" 
-        GridPane.rowIndex="1" GridPane.columnIndex="1"/>
-</GridPane>
+    <padding>
+        <Insets top="30" right="40" bottom="30" left="40"/>
+    </padding>
+
+    <Text text="Titres de Transport Vendus" 
+          style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-fill: #1976D2;"/>
+
+    <ListView fx:id="listeTickets" 
+              style="-fx-pref-width: 600; -fx-pref-height: 400;
+                     -fx-background-color: white; -fx-background-radius: 5;"/>
+
+    <Button text="Retour au menu principal" 
+            onAction="#gererRetour"
+            style="-fx-background-color: #2196F3; -fx-text-fill: white;
+                   -fx-font-weight: bold; -fx-min-width: 200;"/>
+</VBox>
