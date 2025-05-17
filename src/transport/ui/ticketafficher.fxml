@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.GridPane?>
+
+<GridPane xmlns:fx="http://javafx.com/fxml" fx:controller="transport.control.TicketAfficherController"
+          hgap="10" vgap="10">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+    
+    <ListView fx:id="listeTickets" GridPane.rowIndex="0" GridPane.columnSpan="2"/>
+    <Button text="Retour au menu principal" onAction="#gererRetour" 
+        GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+</GridPane>

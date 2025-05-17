@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+
+<GridPane xmlns:fx="http://javafx.com/fxml" fx:controller="transport.control.TicketAjouterController"
+          hgap="10" vgap="10">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <Label text="Prénom :" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+    <TextField fx:id="champPrenom" promptText="Entrez le prénom" 
+              GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+    <Label text="Nom :" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+    <TextField fx:id="champNom" promptText="Entrez le nom"
+              GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+    <Label text="Type d'utilisateur :" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+    <ComboBox fx:id="choixTypeUtilisateur" GridPane.rowIndex="2" GridPane.columnIndex="1">
+        <items>
+            <FXCollections fx:factory="observableArrayList">
+                <String fx:value="Élève"/>
+                <String fx:value="Étudiant"/>
+                <String fx:value="Travailleur"/>
+            </FXCollections>
+        </items>
+    </ComboBox>
+
+    <Label text="Type de titre :" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+    <ComboBox fx:id="choixTypeTitre" GridPane.rowIndex="3" GridPane.columnIndex="1">
+        <items>
+            <FXCollections fx:factory="observableArrayList">
+                <String fx:value="Ticket"/>
+                <String fx:value="Carte de navigation"/>
+            </FXCollections>
+        </items>
+    </ComboBox>
+
+    <Label text="Type de réduction :" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+    <ComboBox fx:id="choixReduction" GridPane.rowIndex="4" GridPane.columnIndex="1">
+        <items>
+            <FXCollections fx:factory="observableArrayList">
+                <String fx:value="Junior"/>
+                <String fx:value="Senior"/>
+                <String fx:value="Solidarité"/>
+                <String fx:value="Partenaire"/>
+            </FXCollections>
+        </items>
+    </ComboBox>
+
+    <Label text="Mode de paiement :" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+    <ComboBox fx:id="choixPaiement" GridPane.rowIndex="5" GridPane.columnIndex="1">
+        <items>
+            <FXCollections fx:factory="observableArrayList">
+                <String fx:value="Espèces"/>
+                <String fx:value="Dahabia"/>
+                <String fx:value="BaridiMob"/>
+            </FXCollections>
+        </items>
+    </ComboBox>
+
+    <Button text="Valider" onAction="#gererSoumettre" 
+            GridPane.rowIndex="6" GridPane.columnIndex="1"/>
+            
+    <Button text="Retour au menu principal" onAction="#gererRetour" 
+            GridPane.rowIndex="7" GridPane.columnIndex="1"/>
+</GridPane>

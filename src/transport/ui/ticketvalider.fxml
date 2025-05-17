@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.GridPane?>
+
+<GridPane xmlns:fx="http://javafx.com/fxml" fx:controller="transport.control.TicketValiderController"
+          hgap="10" vgap="10">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <Label text="Entrez l'ID du titre :"/>
+    <TextField fx:id="champId" promptText="ex : 12345"/>
+
+    <Button text="Valider" onAction="#gererValider" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+    <Label fx:id="labelResultat" style="-fx-font-weight: bold;"/>
+
+    <Button text="Retour au menu principal" onAction="#gererRetour" 
+        GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+</GridPane>
