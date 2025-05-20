@@ -8,105 +8,121 @@
 <VBox xmlns:fx="http://javafx.com/fxml" 
       fx:controller="transport.control.TicketAjouterController"
       spacing="15" alignment="CENTER"
-      style="-fx-background-color: rgb(255, 255, 255);">
+      style="-fx-background-color: rgb(19, 66, 103);">
     
     <padding>
         <Insets top="30" right="40" bottom="30" left="40"/>
     </padding>
 
     <Text text="Nouveau Titre de Transport" 
-          style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-fill: #1976D2;"/>
+          style="-fx-font-size: 48px; -fx-font-weight: bold; -fx-fill: white;"/>
+    
+    <Text text="Créez un nouveau titre" 
+          style="-fx-font-size: 24px; -fx-fill: #00d890;"/>
 
-    <GridPane hgap="15" vgap="15" alignment="CENTER">
+    <GridPane hgap="30" vgap="20" alignment="CENTER">
         <VBox spacing="5" GridPane.rowIndex="0" GridPane.columnIndex="0">
-            <Label text="Prénom" style="-fx-font-weight: bold;"/>
+            <Label text="Prénom" style="-fx-font-weight: bold; -fx-text-fill: white;"/>
             <TextField fx:id="champPrenom" 
                       promptText="Entrez le prénom"
-                      style="-fx-pref-width: 300;
-                             -fx-background-color: white;
-                             -fx-border-color:#31BCE2;
+                      style="-fx-background-color: #132F4C;
+                             -fx-text-fill: white;
+                             -fx-prompt-text-fill: #B0BEC5;
+                             -fx-border-color: #1E4976;
                              -fx-border-radius: 4;
                              -fx-background-radius: 4;
                              -fx-padding: 8;
+                             -fx-pref-width: 250;
+                             -fx-font-size: 13px;"/>
+        </VBox>
+
+        <VBox spacing="5" GridPane.rowIndex="0" GridPane.columnIndex="1">
+            <Label text="Nom" style="-fx-font-weight: bold; -fx-text-fill: white;"/>
+            <TextField fx:id="champNom" 
+                      promptText="Entrez le nom"
+                      style="-fx-background-color: #132F4C;
+                             -fx-text-fill: white;
+                             -fx-prompt-text-fill: #B0BEC5;
+                             -fx-border-color: #1E4976;
+                             -fx-border-radius: 4;
+                             -fx-background-radius: 4;
+                             -fx-padding: 8;
+                             -fx-pref-width: 250;
                              -fx-font-size: 13px;"/>
         </VBox>
 
         <VBox spacing="5" GridPane.rowIndex="1" GridPane.columnIndex="0">
-            <Label text="Nom" style="-fx-font-weight: bold;"/>
-            <TextField fx:id="champNom" 
-                      promptText="Entrez le nom"
-                      style="-fx-pref-width: 300;
-                             -fx-background-color: white;
-                             -fx-border-color:#31BCE2;
+            <Label text="Date de naissance" style="-fx-font-weight: bold; -fx-text-fill: white;"/>
+            <DatePicker fx:id="dateNaissancePicker"
+                      style="-fx-background-color: #132F4C;
+                             -fx-text-fill: white;
+                             -fx-prompt-text-fill: #B0BEC5;
+                             -fx-border-color: #1E4976;
                              -fx-border-radius: 4;
                              -fx-background-radius: 4;
-                             -fx-padding: 8;
+                             -fx-padding: 4;
+                             -fx-pref-width: 250;
+                             -fx-font-size: 13px;"/>
+        </VBox>
+
+        <VBox spacing="5" GridPane.rowIndex="1" GridPane.columnIndex="1">
+            <Label text="Type d'utilisateur" style="-fx-font-weight: bold; -fx-text-fill: white;"/>
+            <ComboBox fx:id="choixTypeUtilisateur" 
+                      promptText="Sélectionnez le type"
+                      style="-fx-background-color: #132F4C;
+                             -fx-text-fill: white;
+                             -fx-prompt-text-fill: #B0BEC5;
+                             -fx-border-color: #1E4976;
+                             -fx-border-radius: 4;
+                             -fx-background-radius: 4;
+                             -fx-padding: 4;
+                             -fx-pref-width: 250;
                              -fx-font-size: 13px;"/>
         </VBox>
 
         <VBox spacing="5" GridPane.rowIndex="2" GridPane.columnIndex="0">
-            <Label text="Date de naissance" style="-fx-font-weight: bold;"/>
-            <DatePicker fx:id="dateNaissancePicker"
-                      style="-fx-pref-width: 300;
-                             -fx-background-color: white;
-                             -fx-border-color:#31BCE2;
+            <Label text="Type de titre" style="-fx-font-weight: bold; -fx-text-fill: white;"/>
+            <ComboBox fx:id="choixTypeTitre"
+                      promptText="Sélectionnez le type"
+                      style="-fx-background-color: #132F4C;
+                             -fx-text-fill: white;
+                             -fx-prompt-text-fill: #B0BEC5;
+                             -fx-border-color: #1E4976;
                              -fx-border-radius: 4;
                              -fx-background-radius: 4;
                              -fx-padding: 4;
+                             -fx-pref-width: 250;
                              -fx-font-size: 13px;"/>
         </VBox>
 
-        <VBox spacing="5" GridPane.rowIndex="3" GridPane.columnIndex="0">
+        <VBox spacing="5" GridPane.rowIndex="2" GridPane.columnIndex="1">
+            <Label text="Mode de paiement" style="-fx-font-weight: bold; -fx-text-fill: white;"/>
+            <ComboBox fx:id="choixPaiement"
+                      promptText="Sélectionnez le mode"
+                      style="-fx-background-color: #132F4C;
+                             -fx-text-fill: white;
+                             -fx-prompt-text-fill: #B0BEC5;
+                             -fx-border-color: #1E4976;
+                             -fx-border-radius: 4;
+                             -fx-background-radius: 4;
+                             -fx-padding: 4;
+                             -fx-pref-width: 250;
+                             -fx-font-size: 13px;"/>
+        </VBox>
+
+        <VBox spacing="5" GridPane.rowIndex="3" GridPane.columnIndex="0" GridPane.columnSpan="2">
             <CheckBox fx:id="handicapeCheckBox" 
                      text="Personne à mobilité réduite"
                      style="-fx-font-size: 13px;
-                            -fx-padding: 5;"/>
-        </VBox>
-
-        <VBox spacing="5" GridPane.rowIndex="4" GridPane.columnIndex="0">
-            <Label text="Type d'utilisateur" style="-fx-font-weight: bold;"/>
-            <ComboBox fx:id="choixTypeUtilisateur" 
-                      promptText="Sélectionnez le type"
-                      style="-fx-pref-width: 300;
-                             -fx-background-color: white;
-                             -fx-border-color:#31BCE2;
-                             -fx-border-radius: 4;
-                             -fx-background-radius: 4;
-                             -fx-padding: 4;
-                             -fx-font-size: 13px;"/>
-        </VBox>
-
-        <VBox spacing="5" GridPane.rowIndex="5" GridPane.columnIndex="0">
-            <Label text="Type de titre" style="-fx-font-weight: bold;"/>
-            <ComboBox fx:id="choixTypeTitre"
-                      promptText="Sélectionnez le type"
-                      style="-fx-pref-width: 300;
-                             -fx-background-color: white;
-                             -fx-border-color:#31BCE2;
-                             -fx-border-radius: 4;
-                             -fx-background-radius: 4;
-                             -fx-padding: 4;
-                             -fx-font-size: 13px;"/>
-        </VBox>
-
-        <VBox spacing="5" GridPane.rowIndex="6" GridPane.columnIndex="0">
-            <Label text="Mode de paiement" style="-fx-font-weight: bold;"/>
-            <ComboBox fx:id="choixPaiement"
-                      promptText="Sélectionnez le mode"
-                      style="-fx-pref-width: 300;
-                             -fx-background-color: white;
-                             -fx-border-color:#31BCE2;
-                             -fx-border-radius: 4;
-                             -fx-background-radius: 4;
-                             -fx-padding: 4;
-                             -fx-font-size: 13px;"/>
+                            -fx-padding: 5;
+                            -fx-text-fill: white;"/>
         </VBox>
     </GridPane>
 
-    <HBox spacing="10" alignment="CENTER">
+    <HBox spacing="10" alignment="CENTER" style="-fx-padding: 20 0 0 0;">
         <Button text="Valider" 
                 onAction="#gererSoumettre"
-                style="-fx-background-color: #4CAF50; 
+                style="-fx-background-color: #00d890; 
                        -fx-text-fill: white;
                        -fx-font-weight: bold;
                        -fx-min-width: 120;
@@ -115,7 +131,7 @@
         
         <Button text="Retour" 
                 onAction="#gererRetour"
-                style="-fx-background-color: #f44336;
+                style="-fx-background-color:rgb(110, 110, 110);
                        -fx-text-fill: white;
                        -fx-font-weight: bold;
                        -fx-min-width: 120;
@@ -124,5 +140,5 @@
     </HBox>
 
     <Label fx:id="labelResultat" 
-           style="-fx-font-weight: bold; -fx-text-fill: #1976D2;"/>
+           style="-fx-font-weight: bold; -fx-text-fill: #00d890;"/>
 </VBox>

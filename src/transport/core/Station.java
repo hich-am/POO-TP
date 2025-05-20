@@ -10,7 +10,7 @@ public class Station implements Suspendable{
     public String getNom() { return nom;  }
 
     @Override
-    public String toString() { return "Station de " + nom ;}
+    public String toString() { return "Station " + nom ;}
     @Override
     public void suspendre() {suspendu = true;}
     @Override

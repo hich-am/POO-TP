@@ -24,15 +24,26 @@ public class ReclamationAfficherController {
                 return;
             }
 
+            // Group reclamations by target
+            Map<Suspendable, List<Reclamation>> reclamationsParCible = new HashMap<>();
+            for (Reclamation r : reclamations) {
+                reclamationsParCible.computeIfAbsent(r.getCible(), k -> new ArrayList<>()).add(r);
+            }
+
+            // Check for suspensions and display warnings
+            for (Map.Entry<Suspendable, List<Reclamation>> entry : reclamationsParCible.entrySet()) {
+                if (entry.getValue().size() >= 3) {
+                    labelAlerte.setText("⚠️ " + entry.getKey().toString() + " est suspendu(e) : 3 réclamations ou plus.");
+                }
+            }
+
+            // Display all reclamations
             for (Reclamation r : reclamations) {
                 listeReclamations.getItems().add(r.toString());
             }
 
-            if (reclamations.size() >= 3) {
-                labelAlerte.setText("⚠️ Suspension : 3 réclamations ou plus enregistrées.");
-            }
         } catch (Exception e) {
-            e.printStackTrace(); // For debugging
+            e.printStackTrace();
             listeReclamations.getItems().add("Erreur lors du chargement des réclamations: " + e.getMessage());
         }
     }

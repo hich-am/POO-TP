@@ -6,7 +6,6 @@ import transport.core.*;
 
 class ReclamationSerializedData implements Serializable {
     private static final long serialVersionUID = 1L;
-    private final int numero;
     private final LocalDate date;
     private final String nomPersonne;
     private final String prenomPersonne;
@@ -16,9 +15,8 @@ class ReclamationSerializedData implements Serializable {
     private final String description;
 
     public ReclamationSerializedData(Reclamation r) {
-        this.numero = r.getNumero();
         this.date = r.getDate();
-        this.nomPersonne = "";  // Since we're creating dummy persons
+        this.nomPersonne = "";
         this.prenomPersonne = r.getPersonne().toString();
         this.type = r.getType();
         this.cibleType = r.getCible() instanceof Station ? "Station" : "MoyenTransport";

@@ -4,50 +4,83 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
+import javafx.scene.control.ListCell;
+import javafx.scene.control.Label;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.scene.Node;
+import javafx.application.Platform;
 
 import java.io.*;
-import java.util.Collections;
-import java.util.List;
-import java.util.ArrayList;
+import java.util.*;
+import java.time.LocalDate;
 
 import transport.core.TitreTransport;
+import transport.core.Ticket;
+import transport.core.CartePersonnelle;
+import transport.core.TitreNonValideException;
+
+import transport.core.*;
 
 public class TicketAfficherController {
-    @FXML private ListView<String> listeTickets;
+    @FXML private ListView<TitreTransport> listeTickets;
+    @FXML private Label labelResultat;
 
     private final String FICHIER_DATA = System.getProperty("user.dir") + File.separator + "fare_media.dat";
 
     @FXML
     public void initialize() {
         try {
-            File fichier = new File(FICHIER_DATA);
-            if (!fichier.exists()) {
-                listeTickets.getItems().add("Aucun titre n'a été enregistré.");
-                return;
-            }
-
             List<TitreTransport> titres = chargerTitres();
             if (titres.isEmpty()) {
-                listeTickets.getItems().add("Aucun titre vendu.");
+                labelResultat.setText("Aucun titre n'a été enregistré.");
                 return;
             }
 
             Collections.reverse(titres);
-            ObservableList<String> listeAffichage = FXCollections.observableArrayList();
-            for (TitreTransport t : titres) {
-                listeAffichage.add(t.toString());
-            }
-            listeTickets.setItems(listeAffichage);
+            listeTickets.setItems(FXCollections.observableArrayList(titres));
+
+            // Add cell factory to customize display
+            listeTickets.setCellFactory(lv -> new ListCell<TitreTransport>() {
+                @Override
+                protected void updateItem(TitreTransport item, boolean empty) {
+                    super.updateItem(item, empty);
+                    if (empty || item == null) {
+                        setText(null);
+                    } else {
+                        setText(item.toString());
+                    }
+                }
+            });
         } catch (Exception e) {
-            listeTickets.getItems().add("Erreur lors du chargement : " + e.getMessage());
+            labelResultat.setText("Erreur lors du chargement : " + e.getMessage());
+        }
+    }
+
+    @FXML
+    public void gererValider(ActionEvent event) {
+        TitreTransport selectedTitre = listeTickets.getSelectionModel().getSelectedItem();
+        if (selectedTitre == null) {
+            labelResultat.setText("Veuillez sélectionner un titre à valider.");
+            return;
+        }
+
+        try {
+            if (selectedTitre instanceof Ticket) {
+                Ticket ticket = (Ticket) selectedTitre;
+                if (ticket.estValide(LocalDate.now())) {
+                    labelResultat.setText("✅ Ticket #" + ticket.getId() + " valide");
+                }
+            } else if (selectedTitre instanceof CartePersonnelle) {
+                CartePersonnelle carte = (CartePersonnelle) selectedTitre;
+                if (carte.estValide(LocalDate.now())) {
+                    labelResultat.setText("✅ Carte #" + carte.getId() + " valide");
+                }
+            }
+        } catch (TitreNonValideException e) {
+            labelResultat.setText("❌ " + e.getMessage());
         }
     }
 

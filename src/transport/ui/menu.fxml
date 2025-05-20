@@ -2,58 +2,86 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Text?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<VBox spacing="20.0" alignment="CENTER" 
-      style="-fx-background-color:rgb(17, 12, 52);"
-      xmlns:fx="http://javafx.com/fxml" 
-      fx:controller="transport.control.MenuController">
-    <padding>
-        <Insets top="40" right="20" bottom="40" left="20"/>
-    </padding>
+<HBox xmlns:fx="http://javafx.com/fxml" 
+      fx:controller="transport.control.MenuController"
+      alignment="CENTER">
+      
+    <VBox alignment="CENTER_LEFT" 
+          style="-fx-background-color: #134267;"
+          prefWidth="400">
+        <padding>
+            <Insets top="40" right="40" bottom="40" left="40"/>
+        </padding>
 
-    <Text text="ESI-RUN Transport Management" 
-          style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-fill: #1976D2;"/>
-
-    <VBox spacing="10" alignment="CENTER" style="-fx-padding: 20;">
-        <Button text="Ajouter un titre" onAction="#gererTicketAjouter" 
-                style="-fx-background-color: #2196F3; 
-                       -fx-text-fill: white; 
-                       -fx-font-weight: bold;
-                       -fx-min-width: 250;
-                       -fx-padding: 8;
-                       -fx-background-radius: 4;"/>
-        <Button text="Afficher les titres vendus" onAction="#gererTicketAfficher"
-                style="-fx-background-color: #2196F3; 
-                       -fx-text-fill: white; 
-                       -fx-font-weight: bold;
-                       -fx-min-width: 250;
-                       -fx-padding: 8;
-                       -fx-background-radius: 4;"/>
-        <Button text="Valider un titre" onAction="#gererTicketValider"
-                style="-fx-background-color: #2196F3; 
-                       -fx-text-fill: white; 
-                       -fx-font-weight: bold;
-                       -fx-min-width: 250;
-                       -fx-padding: 8;
-                       -fx-background-radius: 4;"/>
+        <Text text="ESI-RUN" 
+              style="-fx-font-size: 48px; 
+                     -fx-font-weight: bold; 
+                     -fx-fill: white;"/>
+        <Text text="Système de gestion des transports" 
+              style="-fx-font-size: 24px; 
+                     -fx-fill: #00d890; 
+                     -fx-font-weight: bold;"/>
+        <Text text="Gérez facilement vos titres de transport&#10;et vos réclamations" 
+              style="-fx-font-size: 16px; 
+                     -fx-fill:rgb(99, 202, 167);
+                     -fx-text-alignment: left;"
+              wrappingWidth="300"/>
     </VBox>
 
-    <VBox spacing="10" alignment="CENTER" style="-fx-padding: 20;">
-        <Button text="Enregistrer une réclamation" onAction="#gererReclamation"
-                style="-fx-background-color: #4CAF50; 
-                       -fx-text-fill: white; 
-                       -fx-font-weight: bold;
-                       -fx-min-width: 250;
-                       -fx-padding: 8;
-                       -fx-background-radius: 4;"/>
-        <Button text="Afficher les réclamations" onAction="#gererReclamationAfficher"
-                style="-fx-background-color: #4CAF50; 
-                       -fx-text-fill: white; 
-                       -fx-font-weight: bold;
-                       -fx-min-width: 250;
-                       -fx-padding: 8;
-                       -fx-background-radius: 4;"/>
+    <VBox alignment="CENTER" 
+          style="-fx-background-color: white;"
+          prefWidth="400">
+        <padding>
+            <Insets top="40" right="40" bottom="40" left="40"/>
+        </padding>
+
+        <VBox spacing="10" alignment="CENTER" style="-fx-padding: 20;">
+            <Text text="Gestion des Titres" 
+                  style="-fx-font-size: 20px; 
+                         -fx-fill: #134267;
+                         -fx-font-weight: bold;"/>
+            <Button text="Ajouter un titre" 
+                    onAction="#gererTicketAjouter" 
+                    style="-fx-background-color: #134267; 
+                           -fx-text-fill: white; 
+                           -fx-font-weight: bold;
+                           -fx-min-width: 250;
+                           -fx-padding: 8;
+                           -fx-background-radius: 4;"/>
+            <Button text="Afficher les titres vendus" 
+                    onAction="#gererTicketAfficher"
+                    style="-fx-background-color: #134267; 
+                           -fx-text-fill: white; 
+                           -fx-font-weight: bold;
+                           -fx-min-width: 250;
+                           -fx-padding: 8;
+                           -fx-background-radius: 4;"/>
+        </VBox>
+
+        <VBox spacing="10" alignment="CENTER" style="-fx-padding: 20;">
+            <Text text="Gestion des Réclamations" 
+                  style="-fx-font-size: 20px; 
+                         -fx-fill:#00d890;
+                         -fx-font-weight: bold;"/>
+            <Button text="Enregistrer une réclamation" 
+                    onAction="#gererReclamation"
+                    style="-fx-background-color: #00d890; 
+                           -fx-text-fill: white; 
+                           -fx-font-weight: bold;
+                           -fx-min-width: 250;
+                           -fx-padding: 8;
+                           -fx-background-radius: 4;"/>
+            <Button text="Afficher les réclamations" 
+                    onAction="#gererReclamationAfficher"
+                    style="-fx-background-color: #00d890; 
+                           -fx-text-fill: white; 
+                           -fx-font-weight: bold;
+                           -fx-min-width: 250;
+                           -fx-padding: 8;
+                           -fx-background-radius: 4;"/>
+        </VBox>
     </VBox>
-</VBox>
+</HBox>

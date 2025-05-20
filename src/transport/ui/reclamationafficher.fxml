@@ -8,28 +8,36 @@
 <VBox xmlns:fx="http://javafx.com/fxml" 
       fx:controller="transport.control.ReclamationAfficherController"
       spacing="20" alignment="CENTER"
-      style="-fx-background-color:rgb(17, 12, 52);">
+      style="-fx-background-color: rgb(19, 66, 103);">
     
     <padding>
         <Insets top="30" right="40" bottom="30" left="40"/>
     </padding>
 
     <Text text="Liste des Réclamations" 
-          style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-fill: #1976D2;"/>
+          style="-fx-font-size: 48px; -fx-font-weight: bold; -fx-fill: white;"/>
 
-    <Label fx:id="labelAlerte" 
-           style="-fx-text-fill: #f44336; -fx-font-weight: bold;"/>
+    <Text text="Liste de toutes les réclamations" 
+          style="-fx-font-size: 16px; -fx-fill: #00d890;"/>
 
     <ListView fx:id="listeReclamations" 
               style="-fx-pref-width: 600; -fx-pref-height: 400;
-                     -fx-background-color: white; -fx-background-radius: 5;"/>
+                     -fx-background-color: #132F4C;
+                     -fx-text-fill: white;
+                     -fx-border-color: #1E4976;
+                     -fx-background-radius: 4;"/>
 
-    <Button text="Retour au menu principal" 
-            onAction="#gererRetour"
-            style="-fx-background-color: #2196F3;
-                   -fx-text-fill: white;
-                   -fx-font-weight: bold;
-                   -fx-min-width: 200;
-                   -fx-padding: 8;
-                   -fx-background-radius: 4;"/>
+    <Label fx:id="labelAlerte" 
+           style="-fx-font-weight: bold; -fx-font-size: 16px; -fx-text-fill: #00d890;"/>
+
+    <HBox spacing="10" alignment="CENTER">
+        <Button text="Retour au menu principal" 
+                onAction="#gererRetour"
+                style="-fx-background-color: rgb(110, 110, 110);
+                       -fx-text-fill: white;
+                       -fx-font-weight: bold;
+                       -fx-min-width: 200;
+                       -fx-padding: 8;
+                       -fx-background-radius: 4;"/>
+    </HBox>
 </VBox>

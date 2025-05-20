@@ -25,13 +25,10 @@ public class ReclamationController {
 
     @FXML
     public void initialize() {
-        // Initialize type choices
         choixTypeReclamation.getItems().addAll("TECHNIQUE", "SERVICE");
         
-        // Initialize target type choices
         choixTypeCible.getItems().addAll("Station", "Moyen de transport");
         
-        // Add listener to update available targets based on type
         choixTypeCible.getSelectionModel().selectedItemProperty().addListener((obs, oldVal, newVal) -> {
             choixCible.getItems().clear();
             if (newVal != null) {
@@ -47,7 +44,6 @@ public class ReclamationController {
     @FXML
     private void gererSoumettre(ActionEvent event) {
         try {
-            // Validate inputs
             String utilisateur = champUtilisateur.getText().trim();
             String typeStr = choixTypeReclamation.getValue();
             String typeCible = choixTypeCible.getValue();
@@ -60,31 +56,24 @@ public class ReclamationController {
                 return;
             }
 
-            // Create person
             Personne personne = new Usager(utilisateur, "", LocalDate.now(), false);
             
-            // Create target
             Suspendable cible = typeCible.equals("Station") ? 
                               new Station(cibleNom) : 
                               new MoyenTransport(cibleNom);
             
-            // Create and submit complaint
             TypeReclamation type = TypeReclamation.valueOf(typeStr);
             Reclamation reclamation = new Reclamation(personne, type, cible, commentaire, LocalDate.now());
             
-            // Load existing complaints
-            List<Reclamation> reclamations = chargerReclamations();
-            reclamations.add(reclamation);
+            List<Reclamation> singleReclamation = new ArrayList<>();
+            singleReclamation.add(reclamation);
+            sauverReclamations(singleReclamation);
             
-            // Save updated list and update service
-            sauverReclamations(reclamations);
             service.soumettre(reclamation);
 
-            // Show success message
             afficherMessage("Réclamation enregistrée avec succès!\nNuméro: " + reclamation.getNumero());
             clearFields();
 
-            // Auto-return after success
             autoReturn(event);
 
         } catch (Exception e) {
@@ -127,12 +116,18 @@ public class ReclamationController {
     }
 
     private void sauverReclamations(List<Reclamation> reclamations) throws IOException {
+        List<Reclamation> existingReclamations = chargerReclamations();
+        existingReclamations.addAll(reclamations);
+        
         List<ReclamationSerializedData> dataList = new ArrayList<>();
-        for (Reclamation r : reclamations) {
+        for (Reclamation r : existingReclamations) {
             dataList.add(new ReclamationSerializedData(r));
         }
         
-        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(FICHIER_RECLAMATION))) {
+        File fichier = new File(FICHIER_RECLAMATION);
+        fichier.getParentFile().mkdirs();
+        
+        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(fichier))) {
             out.writeObject(dataList);
         }
     }
@@ -146,9 +141,11 @@ public class ReclamationController {
         try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(fichier))) {
             Object obj = in.readObject();
             if (obj instanceof List<?>) {
-                List<ReclamationData> dataList = (List<ReclamationData>) obj;
+                List<ReclamationSerializedData> dataList = (List<ReclamationSerializedData>) obj;
                 List<Reclamation> reclamations = new ArrayList<>();
-                for (ReclamationData data : dataList) {
+                
+
+                    for (ReclamationSerializedData data : dataList) {
                     reclamations.add(data.toReclamation());
                 }
                 return reclamations;
@@ -159,7 +156,6 @@ public class ReclamationController {
         return new ArrayList<>();
     }
 
-    // Serializable wrapper class for Reclamation
     private static class ReclamationData implements Serializable {
         private static final long serialVersionUID = 1L;
         private final int numero;
@@ -174,16 +170,16 @@ public class ReclamationController {
         public ReclamationData(Reclamation r) {
             this.numero = r.getNumero();
             this.date = r.getDate();
-            this.nomPersonne = "";  // Since we're creating dummy persons
             this.prenomPersonne = r.getPersonne().toString();
+            this.nomPersonne = "";
             this.type = r.getType();
             this.cibleType = r.getCible() instanceof Station ? "Station" : "MoyenTransport";
-            this.cibleNom = r.getCible().toString();
+            this.cibleNom = r.getCible().toString();  // Use toString() since it returns the name
             this.description = r.getDescription();
         }
 
         public Reclamation toReclamation() {
-            Personne personne = new Usager(nomPersonne, prenomPersonne, LocalDate.now(), false);
+            Personne personne = new Usager(prenomPersonne, "", LocalDate.now(), false);
             Suspendable cible = cibleType.equals("Station") ? 
                 new Station(cibleNom) : 
                 new MoyenTransport(cibleNom);

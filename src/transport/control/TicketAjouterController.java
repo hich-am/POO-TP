@@ -22,8 +22,8 @@ public class TicketAjouterController {
     @FXML private ComboBox<String> choixTypeUtilisateur;
     @FXML private ComboBox<String> choixTypeTitre;
     @FXML private ComboBox<String> choixPaiement;
-    @FXML private DatePicker dateNaissancePicker; // Add this
-    @FXML private CheckBox handicapeCheckBox;     // Add this
+    @FXML private DatePicker dateNaissancePicker; 
+    @FXML private CheckBox handicapeCheckBox;     
     
     private final String FICHIER_DATA = System.getProperty("user.dir") + File.separator + "fare_media.dat";
 
@@ -53,7 +53,6 @@ public class TicketAjouterController {
                 return;
             }
 
-            // Create person based on type
             Personne personne;
             if (typeUtilisateur.equals("Conducteur")) {
                 personne = new Employe(nom, prenom, dateNaissance, handicape,
@@ -65,7 +64,6 @@ public class TicketAjouterController {
                 personne = new Usager(nom, prenom, dateNaissance, handicape);
             }
 
-            // Create title - reduction will be automatically applied based on age and type
             TitreTransport nouveauTitre;
             if (typeTitre.equals("Ticket")) {
                 nouveauTitre = new Ticket();
@@ -78,12 +76,10 @@ public class TicketAjouterController {
                 }
             }
 
-            // Save the new title
             List<TitreTransport> titres = chargerTitres();
             titres.add(nouveauTitre);
             sauverTitres(titres);
 
-            // Show success message with calculated price
             afficherMessage(String.format(
                 "Titre créé avec succès!\nID: %d\nPrix: %.2f DA%s", 
                 nouveauTitre.getId(), 
@@ -92,7 +88,6 @@ public class TicketAjouterController {
                     "\nType: " + ((CartePersonnelle)nouveauTitre).getType() : ""
             ));
 
-            // Auto-return after success
             final Stage currentStage = (Stage)((Node)event.getSource()).getScene().getWindow();
             new Thread(() -> {
                 try {
@@ -124,7 +119,6 @@ public class TicketAjouterController {
 
     private void sauverTitres(List<TitreTransport> titres) throws IOException {
         File fichier = new File(FICHIER_DATA);
-        // Create parent directories if they don't exist
         fichier.getParentFile().mkdirs();
         
         try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(fichier))) {
