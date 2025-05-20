@@ -42,7 +42,6 @@ public class TicketAfficherController {
             Collections.reverse(titres);
             listeTickets.setItems(FXCollections.observableArrayList(titres));
 
-            // Add cell factory to customize display
             listeTickets.setCellFactory(lv -> new ListCell<TitreTransport>() {
                 @Override
                 protected void updateItem(TitreTransport item, boolean empty) {

@@ -23,7 +23,6 @@ public class TicketValiderController {
     @FXML private TextField champId;
     @FXML private Label labelResultat;
 
-    // Change the file path to be absolute
     private final String FICHIER_DATA = System.getProperty("user.dir") + File.separator + "fare_media.dat";
 
     @FXML
@@ -45,7 +44,7 @@ public class TicketValiderController {
 
             for (TitreTransport titre : titres) {
                 if (String.valueOf(titre.getId()).equals(id)) {
-                    trouve = true;  // Set trouve to true when found
+                    trouve = true;  
                     if (titre instanceof Ticket) {
                         Ticket t = (Ticket) titre;
                         if (t.getDateAchat().isEqual(LocalDate.now())) {
@@ -67,7 +66,6 @@ public class TicketValiderController {
 
             if (!trouve) labelResultat.setText("ID invalide ❌");
 
-            // Auto-return after success
             final Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 
             if (trouve) {
@@ -91,9 +89,7 @@ public class TicketValiderController {
     private List<TitreTransport> chargerTitres() throws IOException, ClassNotFoundException {
         File fichier = new File(FICHIER_DATA);
         if (!fichier.exists()) {
-            // Create parent directories if they don't exist
             fichier.getParentFile().mkdirs();
-            // Create empty list if file doesn't exist
             return new ArrayList<>();
         }
 
@@ -104,7 +100,6 @@ public class TicketValiderController {
             }
             return new ArrayList<>();
         } catch (EOFException e) {
-            // Handle empty file
             return new ArrayList<>();
         }
     }

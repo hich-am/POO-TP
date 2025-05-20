@@ -174,7 +174,7 @@ public class ReclamationController {
             this.nomPersonne = "";
             this.type = r.getType();
             this.cibleType = r.getCible() instanceof Station ? "Station" : "MoyenTransport";
-            this.cibleNom = r.getCible().toString();  // Use toString() since it returns the name
+            this.cibleNom = r.getCible().toString(); 
             this.description = r.getDescription();
         }
 

@@ -7,7 +7,6 @@ import javafx.stage.Stage;
 import javafx.scene.Parent;
 
 public class Main extends Application {
-    // Define constant window dimensions
     private static final double WINDOW_WIDTH = 800;
     private static final double WINDOW_HEIGHT = 600;
 
