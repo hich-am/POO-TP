@@ -22,18 +22,12 @@
 
     <GridPane hgap="30" vgap="20" alignment="CENTER">
         <VBox spacing="5" GridPane.rowIndex="0" GridPane.columnIndex="0">
-            <Label text="Nom de l'utilisateur" style="-fx-font-weight: bold; -fx-text-fill: white;"/>
-            <TextField fx:id="champUtilisateur" 
-                      promptText="Entrez votre nom"
+            <Label text="Utilisateur" style="-fx-font-weight: bold; -fx-text-fill: white;"/>
+            <ComboBox fx:id="choixUtilisateur" 
+                      promptText="Sélectionnez un utilisateur"
                       style="-fx-background-color: #132F4C;
                              -fx-text-fill: white;
-                             -fx-prompt-text-fill: #E0E0E0;
-                             -fx-border-color: #1E4976;
-                             -fx-border-radius: 4;
-                             -fx-background-radius: 4;
-                             -fx-padding: 8;
-                             -fx-pref-width: 250;
-                             -fx-font-size: 13px;"/>
+                             -fx-prompt-text-fill: #B0BEC5;"/>
         </VBox>
 
         <VBox spacing="5" GridPane.rowIndex="0" GridPane.columnIndex="1">

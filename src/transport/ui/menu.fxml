@@ -83,5 +83,13 @@
                            -fx-padding: 8;
                            -fx-background-radius: 4;"/>
         </VBox>
+
+        <VBox spacing="10" alignment="CENTER" style="-fx-padding: 20;">
+            <Text text="Gestion des Utilisateurs" 
+                  style="-fx-font-size: 20px; -fx-fill: #134267; -fx-font-weight: bold;"/>
+            <Button text="Gérer les utilisateurs" 
+                    onAction="#gererUtilisateurs"
+                    style="-fx-background-color: #134267; -fx-text-fill: white; -fx-font-weight: bold;"/>
+        </VBox>
     </VBox>
 </HBox>

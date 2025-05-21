@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" 
+      fx:controller="transport.control.UtilisateurController"
+      spacing="15" alignment="CENTER"
+      style="-fx-background-color: rgb(19, 66, 103);">
+    
+    <padding>
+        <Insets top="30" right="40" bottom="30" left="40"/>
+    </padding>
+
+    <Text text="Gestion des Utilisateurs" 
+          style="-fx-font-size: 48px; -fx-font-weight: bold; -fx-fill: white;"/>
+
+    <HBox spacing="20" alignment="CENTER">
+        <VBox spacing="15" style="-fx-background-color: #132F4C; -fx-padding: 20;">
+            <Text text="Nouvel Utilisateur" 
+                  style="-fx-font-size: 24px; -fx-fill: #00d890;"/>
+
+            <GridPane hgap="10" vgap="10">
+                <Label text="Type:" textFill="white" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                <ComboBox fx:id="typeUtilisateur" promptText="Sélectionner type" 
+                         GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+                <Label text="Nom:" textFill="white" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                <TextField fx:id="champNom" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+                <Label text="Prénom:" textFill="white" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                <TextField fx:id="champPrenom" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+                <Label text="Date de naissance:" textFill="white" 
+                       GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                <DatePicker fx:id="dateNaissance" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+                <CheckBox fx:id="checkHandicape" text="Personne à mobilité réduite" textFill="white"
+                         GridPane.rowIndex="4" GridPane.columnIndex="0" GridPane.columnSpan="2"/>
+
+                <VBox fx:id="employeFields" visible="false" managed="false" spacing="10"
+                      GridPane.rowIndex="5" GridPane.columnIndex="0" GridPane.columnSpan="2">
+                    <Label text="Matricule:" textFill="white"/>
+                    <TextField fx:id="champMatricule"/>
+                    <Label text="Fonction:" textFill="white"/>
+                    <ComboBox fx:id="choixFonction" promptText="Sélectionner fonction"/>
+                </VBox>
+            </GridPane>
+
+            <Button text="Ajouter" onAction="#handleAjouter"
+                    style="-fx-background-color: #00d890; -fx-text-fill: white;"/>
+        </VBox>
+
+        <VBox spacing="15" style="-fx-background-color: #132F4C; -fx-padding: 20;">
+            <Text text="Liste des Utilisateurs" 
+                  style="-fx-font-size: 24px; -fx-fill: #00d890;"/>
+            <ListView fx:id="listeUtilisateurs" prefWidth="400" prefHeight="400"/>
+        </VBox>
+    </HBox>
+
+    <HBox spacing="10" alignment="CENTER" style="-fx-padding: 20 0 0 0;">
+        <Button text="Ajouter" 
+                onAction="#handleAjouter"
+                style="-fx-background-color: #00d890; 
+                       -fx-text-fill: white;
+                       -fx-font-weight: bold;
+                       -fx-min-width: 120;
+                       -fx-padding: 10;
+                       -fx-background-radius: 4;"/>
+        
+        <Button text="Retour au menu" 
+                onAction="#gererRetour"
+                style="-fx-background-color: rgb(110, 110, 110);
+                       -fx-text-fill: white;
+                       -fx-font-weight: bold;
+                       -fx-min-width: 120;
+                       -fx-padding: 10;
+                       -fx-background-radius: 4;"/>
+    </HBox>
+</VBox>

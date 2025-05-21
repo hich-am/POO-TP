@@ -7,13 +7,15 @@ import javafx.stage.Stage;
 import javafx.event.ActionEvent;
 import javafx.scene.Node;
 import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.util.StringConverter;
 import java.io.*;
 import java.util.*;
 import java.time.LocalDate;
 import transport.core.*;
 
 public class ReclamationController {
-    @FXML private TextField champUtilisateur;
+    @FXML private ComboBox<Personne> choixUtilisateur;
     @FXML private ComboBox<String> choixTypeReclamation;
     @FXML private ComboBox<String> choixTypeCible;
     @FXML private ComboBox<String> choixCible;
@@ -21,10 +23,14 @@ public class ReclamationController {
     @FXML private Label labelResultat;
 
     private final String FICHIER_RECLAMATION = System.getProperty("user.dir") + File.separator + "reclamations.dat";
-    private final ServiceReclamation service = new ServiceReclamation();
+    private ServiceReclamation service;
+    private ServiceUtilisateur serviceUtilisateur;
 
     @FXML
     public void initialize() {
+        service = new ServiceReclamation();
+        serviceUtilisateur = ServiceUtilisateur.getInstance();
+        
         choixTypeReclamation.getItems().addAll("TECHNIQUE", "SERVICE");
         
         choixTypeCible.getItems().addAll("Station", "Moyen de transport");
@@ -39,25 +45,54 @@ public class ReclamationController {
                 }
             }
         });
+        
+        // Load users into ComboBox
+        choixUtilisateur.setItems(FXCollections.observableArrayList(serviceUtilisateur.getUtilisateurs()));
+        
+        // Set cell factory to display user names properly
+        choixUtilisateur.setCellFactory(lv -> new ListCell<Personne>() {
+            @Override
+            protected void updateItem(Personne item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty || item == null) {
+                    setText(null);
+                } else {
+                    setText(item.getPrenom() + " " + item.getNom());
+                }
+            }
+        });
+        
+        // Set converter for selected value display
+        choixUtilisateur.setConverter(new StringConverter<Personne>() {
+            @Override
+            public String toString(Personne personne) {
+                if (personne == null) return null;
+                return personne.getPrenom() + " " + personne.getNom();
+            }
+
+            @Override
+            public Personne fromString(String string) {
+                return null; // Not needed for ComboBox
+            }
+        });
     }
 
     @FXML
     private void gererSoumettre(ActionEvent event) {
         try {
-            String utilisateur = champUtilisateur.getText().trim();
+            // Get selected user instead of text input
+            Personne personne = choixUtilisateur.getValue();
             String typeStr = choixTypeReclamation.getValue();
             String typeCible = choixTypeCible.getValue();
             String cibleNom = choixCible.getValue();
             String commentaire = champCommentaire.getText().trim();
 
-            if (utilisateur.isEmpty() || typeStr == null || typeCible == null || 
+            if (personne == null || typeStr == null || typeCible == null || 
                 cibleNom == null || commentaire.isEmpty()) {
                 afficherMessage("Veuillez remplir tous les champs obligatoires.");
                 return;
             }
 
-            Personne personne = new Usager(utilisateur, "", LocalDate.now(), false);
-            
             Suspendable cible = typeCible.equals("Station") ? 
                               new Station(cibleNom) : 
                               new MoyenTransport(cibleNom);
@@ -82,7 +117,7 @@ public class ReclamationController {
     }
 
     private void clearFields() {
-        champUtilisateur.clear();
+        choixUtilisateur.getSelectionModel().clearSelection(); // Clear user selection
         champCommentaire.clear();
         choixTypeReclamation.getSelectionModel().clearSelection();
         choixTypeCible.getSelectionModel().clearSelection();

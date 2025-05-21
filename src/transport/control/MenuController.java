@@ -40,6 +40,12 @@ public class MenuController {
         chargerScene(event, "/transport/ui/reclamationafficher.fxml");
     }
 
+    @FXML
+    private void gererUtilisateurs(ActionEvent event) {
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        chargerScene(stage, "/transport/ui/utilisateur.fxml");
+    }
+
     private void chargerScene(ActionEvent event, String fxmlPath) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource(fxmlPath));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

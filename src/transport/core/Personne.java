@@ -21,6 +21,14 @@ public abstract class Personne implements Serializable {
         return dateNaissance;
     }
 
+    public String getNom() {
+        return nom;
+    }
+
+    public String getPrenom() {
+        return prenom;
+    }
+
     public boolean isHandicape() {
         return handicape;
     }
